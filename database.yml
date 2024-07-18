@@ -34,6 +34,18 @@
       name: mariadb-server
       state: present
       update-cache: true
+    loop:
+      - mariadb-server
+      - mariadb-client
+      - python3-pymysql
+
+  - name: Cambiar la configuracion para escuchar en todas las interfaces
+    ansible.builtin.libeinfile:
+      path: /etc/mysqlmariadb.conf.d/50-servercnf
+      regexp: '^bind-address'
+      line: 'bind-address =0.0.0.0'
+    
+
 
   - name: Servidor MariaDB levantado
     ansible.builtin.systemd_service:
