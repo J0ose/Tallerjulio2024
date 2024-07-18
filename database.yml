@@ -81,4 +81,5 @@
       enable: true
 
 
-    
+              Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-headless"
+          Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
